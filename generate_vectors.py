@@ -6,7 +6,7 @@ model = SentenceTransformer('all-MiniLM-L6-v2')
 
 sqliteConnection = sqlite3.connect('favs.db')
 cursor = sqliteConnection.cursor()
-select_query = """SELECT * FROM fav_sentences WHERE id = 9"""
+select_query = """SELECT * FROM fav_sentences WHERE favorites_id IN (8,9);"""
 rows = cursor.execute(select_query).fetchall()
 sentence_ids = [row[0] for row in rows]
 sentences = [row[3] for row in rows]
